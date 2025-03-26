@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        /* Background Gradient */
+        body {
+            background: linear-gradient(45deg, #6a11cb, #2575fc); 
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* 3D Hover Effect on List Items */
+        .feature-item {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .feature-item:hover {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animated Header */
+        .features-header {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Footer Styling */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+
+        /* Button Styles */
+        .btn-link {
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .btn-link:hover {
+            color: #ff6347;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#" th:href="@{/}">Raj Website</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/profile}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Features Section -->
+    <header class="text-center py-4">
+        <h1 class="features-header">Our Features</h1>
+    </header>
+    
+    <main class="container my-5">
+        <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <h3>User-friendly interface</h3>
+                    <p>A simple, clean, and intuitive interface to ensure ease of use for everyone.</p>
+                </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <h3>Secure registration and login</h3>
+                    <p>Your personal information is safely encrypted with the latest security measures.</p>
+                </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <h3>24/7 support</h3>
+                    <p>Our customer support is available round the clock to assist you with any issues.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5">
+        <p>&copy; 2025 Raj Website. All Rights Reserved.</p>
+        <div>
+            <a href="index.html" class="btn-link">Back to Home</a> |
+            <a href="contact.html" th:href="@{/contact}" class="btn-link">Contact Us</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

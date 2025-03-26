@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Employee List</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/style.css}"> <!-- Custom Styles -->
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script th:src="@{/script.js}" defer></script>
+
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Employee List</h3>
+            </div>
+            <div class="card-body">
+                <button onclick="window.location.href='/employees/new'" 
+                        class="btn btn-success mb-3">
+                    <i class="fas fa-user-plus"></i> Add New Employee
+                </button>
+
+                <table class="table table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="emp : ${employees}">
+                            <td th:text="${emp.id}"></td>
+                            <td th:text="${emp.name}"></td>
+                            <td th:text="${emp.email}"></td>
+                            <td th:text="${emp.department}"></td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" 
+                                        th:onclick="|window.location.href='/employees/edit/${emp.id}'|">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm" 
+                                        th:attr="data-id=${emp.id}" 
+                                        onclick="confirmDelete(this)">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function confirmDelete(button) {
+            let empId = button.getAttribute("data-id");
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/employees/delete/" + empId;
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

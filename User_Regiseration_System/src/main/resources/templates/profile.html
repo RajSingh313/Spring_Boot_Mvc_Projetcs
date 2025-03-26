@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        /* Background Gradient */
+        body {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b); 
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* 3D Profile Card */
+        .card {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: rotateY(10deg) rotateX(10deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Vibrant Hover Effects */
+        .btn-danger {
+            background-color: #ff6347;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #ff4500;
+        }
+
+        .btn-link {
+            color: #007bff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .btn-link:hover {
+            color: #0056b3;
+        }
+
+        /* Animated Welcome Text */
+        .welcome-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Card Body Styling */
+        .card-body {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        /* Footer Styling */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#" th:href="@{/}">My Website</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <div class="container my-5">
+        <div class="text-center">
+            <!-- Animated Welcome Text -->
+            <h1 class="welcome-text">Welcome, <span th:text="${modelName}"></span>!</h1>
+            
+            <!-- Profile Card with 3D Hover Effect -->
+            <div class="card mx-auto" style="max-width: 400px;">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-3">Profile Information</h4>
+                    <p class="card-text">
+                        <strong>Email:</strong> <span th:text="${modelEmail}"></span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Phone Number:</strong> <span th:text="${modelPhoneno}"></span>
+                    </p>
+                </div>
+                <div class="card-footer text-center">
+                    <!-- Vibrant Logout Button -->
+                    <a class="btn btn-danger" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5">
+        <p>&copy; 2025 Raj Website. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

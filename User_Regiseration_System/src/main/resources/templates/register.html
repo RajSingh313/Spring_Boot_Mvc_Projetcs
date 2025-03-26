@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#" th:href="@{/}">Raj Website</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/loginPage}">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Register Here</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Success Message -->
+                <div th:if="${successMsg}" class="alert alert-success text-center">
+                    <span th:text="${successMsg}"></span>
+                </div>
+
+                <!-- Error Message -->
+                <div th:if="${errorMsg}" class="alert alert-danger text-center">
+                    <span th:text="${errorMsg}"></span>
+                </div>
+
+                <!-- Registration Form -->
+                <form th:action="@{/regForm}" th:object="${user}" method="post" class="p-4 border rounded shadow-sm bg-light">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email ID</label>
+                        <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneno" class="form-label">Phone Number</label>
+                        <input type="text" id="phoneno" th:field="*{phoneno}" class="form-control" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+
+                <!-- Navigation Links -->
+                <div class="text-center mt-4">
+                    <a href="#" th:href="@{/}" class="btn btn-link">Back to Home</a>
+                    <span>|</span>
+                    <a href="#" th:href="@{/loginPage}" class="btn btn-link">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>&copy; 2025 My Raj. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
